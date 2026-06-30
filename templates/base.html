@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RetailVision AI</title>
+    <!-- Google Fonts for typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo">
+                <i class="fa-solid fa-cube"></i> RetailVision <span>AI</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/"><i class="fa-solid fa-camera"></i> Predict</a></li>
+                <li><a href="/dashboard"><i class="fa-solid fa-chart-line"></i> Dashboard</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 Adarsh Kasaragod - AI Engineer Portfolio Project</p>
+    </footer>
+
+    <!-- Custom JS -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

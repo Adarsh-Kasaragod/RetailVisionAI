@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="dashboard-section">
+    <div class="header-text">
+        <h1>Prediction History</h1>
+        <p>View the recent inference logs stored in the SQLite database.</p>
+    </div>
+
+    <div class="card table-card">
+        {% if history %}
+        <div class="table-responsive">
+            <table class="history-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Image</th>
+                        <th>Predicted Product</th>
+                        <th>Confidence</th>
+                        <th>Timestamp</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in history %}
+                    <tr>
+                        <td>#{{ item.id }}</td>
+                        <td>
+                            <div class="thumb-container">
+                                <img src="/static/uploads/{{ item.filename }}" alt="Product thumb">
+                            </div>
+                        </td>
+                        <td class="fw-bold">{{ item.predicted_class }}</td>
+                        <td>
+                            <span class="badge {% if item.confidence > 80 %}badge-success{% elif item.confidence > 50 %}badge-warning{% else %}badge-danger{% endif %}">
+                                {{ item.confidence|round(1) }}%
+                            </span>
+                        </td>
+                        <td class="text-muted">{{ item.timestamp }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="empty-state">
+            <i class="fa-solid fa-box-open empty-icon"></i>
+            <h3>No predictions yet</h3>
+            <p>Go to the Predict tab and upload an image to see it here.</p>
+            <a href="/" class="btn btn-primary mt-2">Make a Prediction</a>
+        </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

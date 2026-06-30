@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="upload-section">
+    <div class="header-text">
+        <h1>Product Image Classification</h1>
+        <p>Upload a clear photo of a retail product to instantly classify it using our advanced TensorFlow CNN.</p>
+    </div>
+
+    <div class="card upload-card">
+        <div id="drop-zone" class="drop-zone">
+            <input type="file" id="file-input" accept="image/png, image/jpeg, image/jpg, image/webp" hidden>
+            <div class="drop-zone-content">
+                <i class="fa-solid fa-cloud-arrow-up upload-icon"></i>
+                <h3>Drag & Drop your image here</h3>
+                <p>or</p>
+                <button class="btn btn-primary" onclick="document.getElementById('file-input').click()">Browse Files</button>
+                <p class="file-hint">Supported formats: JPG, PNG, WEBP</p>
+            </div>
+            
+            <!-- Image Preview (Hidden by default) -->
+            <div id="preview-container" class="preview-container hidden">
+                <img id="image-preview" src="" alt="Image Preview">
+                <button id="remove-btn" class="btn-icon"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+        </div>
+
+        <div class="action-bar">
+            <button id="predict-btn" class="btn btn-accent btn-large" disabled>
+                <span>Analyze Image</span> <i class="fa-solid fa-wand-magic-sparkles"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Loading State -->
+    <div id="loading-state" class="loading-state hidden">
+        <div class="spinner"></div>
+        <p>Processing with OpenCV and TensorFlow...</p>
+    </div>
+
+    <!-- Results State -->
+    <div id="result-state" class="result-state hidden">
+        <h2>Prediction Results</h2>
+        <div class="result-card">
+            <div class="result-details">
+                <p class="label">Predicted Product</p>
+                <h3 id="result-class" class="result-value">---</h3>
+                
+                <p class="label mt-2">Confidence Score</p>
+                <div class="progress-bar">
+                    <div id="confidence-fill" class="progress-fill" style="width: 0%"></div>
+                </div>
+                <p id="result-confidence" class="confidence-text">0%</p>
+            </div>
+        </div>
+        <button id="reset-btn" class="btn btn-outline mt-3">Analyze Another Image</button>
+    </div>
+</section>
+{% endblock %}
