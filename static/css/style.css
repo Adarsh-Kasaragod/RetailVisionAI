@@ -4,16 +4,16 @@
     --primary: #6C63FF;
     --primary-hover: #5a52d5;
     --accent: #00D4AA;
-    --bg-color: #0A0F1E;
-    --card-bg: #111827;
-    --card-border: rgba(108, 99, 255, 0.15);
-    --text-main: #F1F5F9;
-    --text-muted: #94A3B8;
-    --border-color: #1E2A3A;
+    --bg-color: #f4f6f9;
+    --card-bg: #ffffff;
+    --card-border: rgba(0, 0, 0, 0.08);
+    --text-main: #1a1a2e;
+    --text-muted: #6c757d;
+    --border-color: #e0e0e0;
     --danger: #FF4D6D;
     --warning: #FFB830;
     --success: #00D4AA;
-    --glow: rgba(108, 99, 255, 0.35);
+    --glow: rgba(108, 99, 255, 0.15);
 }
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -21,9 +21,6 @@
 body {
     font-family: 'Inter', sans-serif;
     background-color: var(--bg-color);
-    background-image:
-        radial-gradient(ellipse at 20% 20%, rgba(108, 99, 255, 0.07) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 80%, rgba(0, 212, 170, 0.05) 0%, transparent 50%);
     color: var(--text-main);
     line-height: 1.6;
     min-height: 100vh;
@@ -33,14 +30,13 @@ body {
 
 /* ===== NAVBAR ===== */
 .navbar {
-    background: rgba(17, 24, 39, 0.85);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--card-border);
+    background: #ffffff;
+    border-bottom: 1px solid var(--border-color);
     padding: 1rem 2rem;
     position: sticky;
     top: 0;
     z-index: 100;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
 }
 
 .nav-container {
@@ -53,13 +49,12 @@ body {
 
 .logo {
     font-size: 1.4rem;
-    font-weight: 800;
+    font-weight: 700;
     color: var(--text-main);
     text-decoration: none;
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    letter-spacing: -0.5px;
 }
 
 .logo i { color: var(--primary); }
